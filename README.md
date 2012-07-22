@@ -21,7 +21,11 @@ preamble.tex uses the fontspec package that is not supported by vanilla LaTeX. T
 **Usage**
 
 To import the preamble.tex file, use
+
     \input{preamble.tex}
+
 after the document class. Immediately before that line, include the line
+
     \newcommand{\ispdfversion}{true}.
+
 This line tells the file whether you want the PDF or print version. If changing this (the other option is 'false'), be sure to trash all auxillary (.aux, .synctex, etc.) files before rebuilding the file.
