@@ -5,7 +5,7 @@
 
 
 % Formatting packages
-\usepackage{a4wide, fancyhdr, titlesec, lipsum, ragged2e, microtype, thmtools, ccicons, needspace, setspace, framed} % paralist, framed, layouts % unused
+\usepackage{a4wide, fancyhdr, titlesec, lipsum, ragged2e, microtype, thmtools, ccicons, needspace, setspace, framed, lipsum}
 % a4wide	- Sets the geometry to use a reasonable amount of width
 % fancyhdr	- Gives us interesting headers and footers
 % titlesec	- Define different formatting and fonts for titles
@@ -17,6 +17,7 @@
 % needspace	- Prevent page breaks between example heads and bodies
 % setspace	- Define singlespace areas
 % framed	- For shaded quotes
+% lipsum	- For lorem ipsum
 
 
 % Packages to make tables useful and pretty
@@ -135,7 +136,7 @@
 \setlength{\hfuzz}{1pc}
 
 \ifbool{pdfversion}{
-	\linespread{1.3}
+	\linespread{1.0}
 	\setlength{\oddsidemargin}{0cm}
 }{
 	\linespread{2.0}
