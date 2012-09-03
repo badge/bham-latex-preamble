@@ -29,3 +29,9 @@ after the document class. Immediately before that line, include the line
     \newcommand{\ispdfversion}{true}
 
 This line tells the file whether you want the PDF or print version. If changing this (the other option is 'false'), be sure to trash all auxillary (.aux, .synctex, etc.) files before rebuilding the file.
+
+----
+
+**Future Plans**
+
+I'm currently in the process of packaging things up into a class file, make life easier and more consistent.
