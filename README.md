@@ -18,6 +18,12 @@ preamble.tex uses the fontspec package that is not supported by vanilla LaTeX. T
 
 ----
 
+**Downloading**
+
+Click on the Downloads tab to the top-right of this page, then click *Download as zip* or *Download as tar.gz*. This gives you the preamble.tex file, along with the examples files and this readme.
+
+----
+
 **Usage**
 
 To import the preamble.tex file, use
