@@ -5,7 +5,7 @@
 
 
 % Formatting packages
-\usepackage{a4wide, fancyhdr, titlesec, lipsum, ragged2e, microtype, thmtools, ccicons, needspace, setspace, framed, lipsum}
+\usepackage{a4wide, fancyhdr, titlesec, lipsum, ragged2e, microtype, thmtools, ccicons, needspace, setspace, framed, lipsum, mdframed}
 % a4wide	- Sets the geometry to use a reasonable amount of width
 % fancyhdr	- Gives us interesting headers and footers
 % titlesec	- Define different formatting and fonts for titles
@@ -18,6 +18,7 @@
 % setspace	- Define singlespace areas
 % framed	- For shaded quotes
 % lipsum	- For lorem ipsum
+% mdframed	- For framing the Algorithm style
 
 
 % Packages to make tables useful and pretty
@@ -61,7 +62,7 @@
 
 \setmainfont[Ligatures=TeX, Numbers=OldStyle]{Linux Libertine O}
 %\setmainfont{Hoefler Text}
-\setsansfont[Mapping=tex-text]{Helvetica Neue}
+\setsansfont[Mapping=tex-text]{Helvetica}
 \setmonofont{Consolas}
 
 \newcommand{\dispnums}{\fontspec[Ligatures=TeX]{Linux Libertine O}}
@@ -175,16 +176,16 @@
 \newcommand{\exrule}{\rule{\textwidth-4em}{1pt}}
 	
 \declaretheoremstyle[
-	spaceabove		= 15pt, spacebelow=15pt,		% Space above and below the entire example
 	headfont		= \sffamily\bfseries,			% Head font
 	headformat		= $\blacktriangledown$ \NAME~\NUMBER\NOTE\vspace{-3mm},	% LaTeX for the header; \NAME, \NUMBER and \NOTE supplied by thmtools, be careful with spacing
-	headpunct		= \newline\exrule\newline,		% Punctuation after the head
+	postheadhook	= ~\newline\exrule\newline,		% Punctuation after the head
 	notefont		= \itshape,						% Fond of the note (example name in this case)
 	notebraces		= {--- }{},						% Braces before and after note; again be careful with spaces.
-	bodyfont		= \leftskip=2em \rightskip=2em \itshape \rmfamily \linespread{1.05}, % Body font and formatting
-	preheadhook		= \Needspace*{4\baselineskip},	% Hook before the head; using needspace to ensure the head of the example is not on a separate page to its body.
+	bodyfont		= \itshape \rmfamily \linespread{1.05}, % Body font and formatting
+	preheadhook		= \quote,						% Hook before the head
 	postheadspace	= 0pt,							% Space after the head; we want none as we have a new line already
-	prefoothook		= \ifhmode \hspace*{\fill}\newline \else \vspace{-5mm} \fi \exrule	% Hook for LaTeX code before the foot of the example (the space below it). If we're in horizontal mode, add a new line, otherwise just draw the ruled line. This makes 90% of the examples require no manual spacing.
+	prefoothook		= \ifhmode \hspace*{\fill}\newline \else \vspace{-5mm} \fi \exrule,	% Hook for LaTeX code before the foot of the example (the space below it). If we're in horizontal mode, add a new line, otherwise just draw the ruled line. This makes 90% of the examples require no manual spacing.
+	postfoothook	= \endquote
 	]{examplestyle}
 	
 \declaretheorem[style=examplestyle, numberwithin=section]{example}
@@ -198,11 +199,12 @@
 	notefont		= \itshape,						% Fond of the note (example name in this case)
 	notebraces		= {--- }{},						% Braces before and after note; again be careful with spaces.
 	bodyfont		= \sffamily\bfseries,			% Body font and formatting
-	preheadhook		= \Needspace*{4\baselineskip},%\begin{center},	% Hook before the head; using needspace to ensure the head of the example is not on a separate page to its body.
 	postheadspace	= 10pt							% Space after the head
 	]{algorstyle}
 
-\declaretheorem[style=algorstyle, shaded={textwidth=30em, rulecolor={rgb}{0,0,0}, rulewidth=1pt, bgcolor={rgb}{1,1,1}}, numberwithin=section]{algorithm}
+\theoremstyle{algorstyle}
+\newmdtheoremenv[linecolor=black, leftmargin=30, rightmargin=30, skipabove=20pt, skipbelow=20pt]{algorithm}%
+	{Algorithm}[section]
 
 % For quote shading
 \ifbool{pdfversion}{
